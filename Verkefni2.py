@@ -37,16 +37,29 @@ def page(id):
 def b():
     return """
     <h2>Verkefni 2 - B</h2>
-    <a><img></img></a>
-    <a><img></img></a>
-    <a><img></img></a>
+    <h3>Veldu uppáhalds liðið þitt</h3>
+    <a href="/sida2?lid=Astralis"><img src='Images/Astralis.png'></a>
+    <a href="/sida2?lid=North"><img src='Images/North.png'></a>
+    <a href="/sida2?lid=Liquid"><img src='Images/Liquid.png'></a>
     """
+
+@route("/sida2")
+def page():
+    I = request.query.lid
+    if I=="Astralis":
+        return "<h3>Þetta er uppáhaldsliðið mitt</h3><img src='Images/Astralis.png'>"
+    elif I=="North":
+        return "<h3>Þetta er uppáhaldsliðið mitt</h3><img src='Images/North.png'>"
+    elif I=="Liquid":
+        return "<h3>Þetta er uppáhaldsliðið mitt</h3><img src='Images/Liquid.png'>"
 
 @error(404)
 def villa(error):
     return "<h2>Error: 404 Not Found</h2>"
 
-
+@route("/Images/<skra>")
+def static_skra(skra):
+    return static_file(skra, root="Images")
 run(host="Localhost", port=8080, reloader=True, debug=True)
 
 #bottle.run(host="0.0.0.0", port=argv[1])
