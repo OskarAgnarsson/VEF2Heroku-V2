@@ -1,0 +1,1 @@
+web: python ./Verkefni2.py $PORT

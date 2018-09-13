@@ -1,4 +1,4 @@
-#from sys import argv
+from sys import argv
 
 from bottle import *
 
@@ -60,6 +60,5 @@ def villa(error):
 @route("/Images/<skra>")
 def static_skra(skra):
     return static_file(skra, root="Images")
-run(host="Localhost", port=8080, reloader=True, debug=True)
 
-#bottle.run(host="0.0.0.0", port=argv[1])
+bottle.run(host="0.0.0.0", port=argv[1])
